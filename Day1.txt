@@ -1,0 +1,275 @@
+1. Classes and Objects: The Blueprint and the Toy
+Remember that a Class is just a blueprint for a brand-new robot toy, not the real robot itself. The Object is the actual toy you build, like a red robot named "Sparky".
+
+The Code Snippet:
+
+Java
+// The Class (The Blueprint)
+class Robot {
+    // Variables (State)
+    String name;
+    String color;
+
+    // Method (Behavior)
+    void walk() {
+        System.out.println(name + " is walking!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // The Object (The Real Toy)
+        Robot sparky = new Robot(); 
+        sparky.name = "Sparky";
+        sparky.color = "Red";
+        
+        sparky.walk(); // Output: Sparky is walking!
+    }
+}
+Common Interview Question: > Q: What is the difference between a Class and an Object?
+
+
+A: A Class is a blueprint or template that defines the state and behavior of an entity. An Object is an actual instance of that class that takes up memory and has specific values assigned to its state.
+
+2. Variables and Data Types: The Storage Boxes
+Variables are like cardboard boxes used to remember things. Java is very strict about what goes in the box; you can't put a wet swimsuit in a box meant for dry books.
+
+The Code Snippet:
+
+Java
+public class Main {
+    public static void main(String[] args) {
+        // Strict data types for specific boxes
+        int age = 10;                  // strictly for whole numbers [cite: 18]
+        String message = "Hello World"; // strictly for words and text [cite: 19]
+        boolean isLightOn = true;       // tiny box that only holds true or false [cite: 20]
+    }
+}
+Common Interview Question:
+
+Q: Java is a "statically-typed" language. What does that mean?
+
+
+A: It means every variable must be declared with a specific data type before it can be used, and it can only hold values of that exact type. The compiler checks this before the program even runs.
+
+3. Methods: The Action Buttons
+If variables are the things you have, methods are the things you do. Instead of rewriting jumping instructions every time, you just call the jump() method like pressing a button on a controller.
+
+The Code Snippet:
+
+Java
+class Player {
+    // The Method (Action Button)
+    void jump() {
+        System.out.println("Character jumps into the air!");
+    }
+}
+
+public class Game {
+    public static void main(String[] args) {
+        Player mario = new Player();
+        mario.jump(); // "Pressing" the button to trigger the action
+    }
+}
+Common Interview Question:
+
+Q: Why do we use methods in Java?
+A: Methods promote code reusability. Instead of writing the same logic multiple times, you write it once in a method and simply call that method whenever the action is needed.
+
+4. Conditionals (If / Else): The Crossroads
+Computers use "If/Else" statements to make decisions based on rules. IF it is raining, take an umbrella; ELSE, wear a sun hat.
+
+The Code Snippet:
+
+Java
+public class Weather {
+    public static void main(String[] args) {
+        boolean isRaining = true;
+
+        if (isRaining) {
+            System.out.println("Take an umbrella.");
+        } else {
+            System.out.println("Wear a sun hat.");
+        }
+    }
+}
+Common Interview Question:
+
+Q: When would you use an if-else statement versus a switch statement?
+A: An if-else statement evaluates boolean conditions (true/false) and is great for complex logic or ranges. A switch statement evaluates a single variable against multiple specific, fixed values (like matching a specific day of the week), making the code cleaner to read.
+
+5. Loops (For / While): The Repeat Machine
+Loops act as a magical machine that repeats a chore over and over, like writing "I will not talk in class" 100 times on a chalkboard.
+
+The Code Snippet:
+
+Java
+public class Punishment {
+    public static void main(String[] args) {
+        // A 'for' loop that runs exactly 100 times
+        for (int i = 1; i <= 100; i++) {
+            System.out.println(i + ": I will not talk in class");
+        }
+    }
+}
+Common Interview Question:
+
+Q: What is the difference between a for loop and a while loop?
+A: A for loop is typically used when you know exactly how many times you want to iterate (like exactly 100 times). A while loop is used when you want the code to repeat until a specific condition changes, regardless of how many times it takes.
+
+6. The JVM: The Universal Translator
+The JVM (Java Virtual Machine) is the magical translator that gives Java its "Write Once, Run Anywhere" superpower.
+
+Common Interview Question:
+
+Q: How does Java achieve platform independence?
+A: When you write Java code, it gets compiled into "bytecode". This bytecode isn't tied to Windows, Mac, or Linux. Instead, the JVM on the user's specific machine reads that bytecode and translates it into machine code on the spot. Because every operating system has its own JVM, you only have to write your Java code once!
+
+
++++++++++++===============================Encapusaltion===========================================
+1. Encapsulation: The Magic Piggy Bank
+The Scenario: Imagine you have a piggy bank. You don’t want your little brother to just reach in and grab your money! So, the piggy bank is sealed tight. The only way to put money in or check your balance is through the tiny coin slot on top.
+
+In Java, Encapsulation means hiding the important data inside a Class so other parts of the program can't accidentally break it or steal it. You make the data private, and you give people safe public methods (like the coin slot) to interact with it.
+
+class Piggy {
+    // hidden data
+    private int balance = 0;
+
+    /*
+     * public method 1)addcoin only addcoin and checkbal permits rather than balance
+     * access
+     */
+    public void addCoin(int amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println("Add" + amount + "Coins");
+        }
+
+    }
+
+    // 2)checkbalace:check money
+    public int checkbalance() {
+        return balance;
+    }
+}
+
+public class Encapsulation {
+    public static void main(String[] args) {
+        Piggy p = new Piggy();
+        p.addCoin(10);
+
+        // optional step
+        p.checkbalance();
+        System.out.println("Balaces is" + p + "");// it gives hashcode
+
+    }
+}
+
+==================inheritnace===================================
+In Java, Inheritance allows one Class to adopt the traits (variables) and actions (methods) of another Class using the keyword extends. It saves you from typing the same code over and over.
+
+//Parent class
+class Vehicle {
+    int speed;
+
+    void run() {
+        System.out.println("vehicle is running" + speed + "mph");
+    }
+
+}
+
+// child class
+class Car extends Vehicle {
+    void TurnonAc() {
+        System.out.println("Turning on ac");
+    }
+}
+
+// child class
+class Bicycle extends Vehicle {
+    void walk() {
+        System.out.println("bycycle is walking");
+    }
+}
+
+public class Inheritance {
+
+    public static void main(String[] args) {
+        Vehicle vehicle = new Vehicle();
+        vehicle.run();
+
+        Bicycle bicycle = new Bicycle();
+        bicycle.walk();
+        bicycle.run();// bycyle can do both because we extend vehicle class
+
+        Car car = new Car();
+        car.TurnonAc();
+        car.run();//
+
+    }
+
+}
+=======================================
+3. Polymorphism: The Universal Video Game Button
+The Scenario:
+"Poly" means many, and "morph" means forms. Think of a video game controller. You have an "Attack" button. If you are playing as a Knight, pressing Attack makes him swing a sword. If you are playing as a Wizard, pressing that exact same button makes him shoot a fireball.
+
+In Java, Polymorphism means you can call the same method, but it will do different things depending on which specific Object is performing the action.
+
+
+class VideoGameChar {
+    void attack() {
+        System.out.println("Attack button basics features");
+    }
+}
+
+class Knight extends VideoGameChar {
+    @Override
+    void attack() {
+        System.out.println("Knight swing the sword");
+    }
+}
+
+class Wizard extends VideoGameChar {
+    @Override
+    void attack() {
+        System.out.println("Wizards throwing fireball");
+    }
+}
+
+public class Polymorphism {
+    public static void main(String[] args) {
+        Knight kn = new Knight();
+        kn.attack();
+
+        Wizard wz = new Wizard();
+        wz.attack();
+
+    }
+}
+=========================================Abstaction
+When you want to watch TV, you press the big red "Power" button on your remote. The TV turns on. Do you know how the electricity flows through the circuit boards, connects to the display panel, and receives the infrared signal? No! And you don't need to. The remote hides all that messy, complicated wiring and just gives you an easy button to press.
+
+In Java, Abstraction is about hiding the complex background details and showing only the essential features to the user. You usually do this using abstract classes or Interfaces
+
+
+abstract class Tv {
+    // no code just absract method asbtarct method dont have [body] and need
+    // abstract [class] also , we cant instiatitate abstract class in main method
+    abstract void turnonTv();
+}
+
+class SmartTv extends Tv {
+    void turnonTv() {
+        System.out.println("turning on tv");
+    }
+}
+
+public class Abstraction {
+    public static void main(String[] args) {
+        SmartTv sTv = new SmartTv();
+        sTv.turnonTv();
+    }
+
+}
