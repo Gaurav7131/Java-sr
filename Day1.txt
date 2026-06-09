@@ -273,3 +273,146 @@ public class Abstraction {
     }
 
 }
+
+
+==========================================Labels in java========================
+Java मध्ये Labels (लेबल्स) म्हणजे एखाद्या विशिष्ट Loop ला (म्हणजेच पुन्हा पुन्हा केल्या जाणाऱ्या कामाला) दिलेले 'नाव' किंवा 'खूण'.
+
+१० वर्षाच्या मुलासाठी सोपे उदाहरण: (Real-World Scenario)
+
+कल्पना कर, तुझ्या घरात ३ खोल्या (Rooms) आहेत आणि प्रत्येक खोलीत ३ खोके (Boxes) आहेत. तुला तुझी आवडती 'लाल रंगाची खेळण्यातील कार' शोधायची आहे.
+
+तू पहिल्या खोलीत जातोस आणि त्यातले खोके उघडून पाहतोस. जर कार नाही मिळाली, तर तू दुसऱ्या खोलीत जातोस.
+आता समजा, तुला दुसऱ्या खोलीतल्या दुसऱ्या खोक्यात तुझी कार मिळाली!
+आता तू काय करशील? तू उरलेले खोके आणि उरलेली तिसरी खोली शोधत बसशील का? नाही! तू लगेच शोध थांबवून खेळायला जाशील.
+
+Java मध्ये जेव्हा एका Loop च्या आत दुसरा Loop असतो (म्हणजे खोलीच्या आत खोके), आणि तुला एकदम सगळं काम थांबवून बाहेर यायचं असतं, तेव्हा Label चा उपयोग होतो.
+
+जर तू फक्त break; (थांबा) म्हणालास, तर तू फक्त त्या 'खोलीतले खोके' शोधायचे थांबवशील, पण तुझा प्रोग्राम तरीही पुढच्या (तिसऱ्या) खोलीत जाईल.
+
+पण जर तू तुझ्या पूर्ण शोधाला एक नाव (Label) दिलेस - जसे की Ghar_Sodh: आणि म्हणालास break Ghar_Sodh;, तर कॉम्प्युटरला समजते की आता पूर्ण घराची शोध मोहीम थांबवायची आहे आणि थेट बाहेर यायचे आहे!
+
+public class Label {
+    public static void main(String[] args) {
+        // Lable name
+       Search_Home:
+        // [room >> box] we used for becoz we know exactly how many times we want to iterate
+
+        for (int room = 1; room <= 3; room++) {
+            for (int box = 1; box <= 3; box++) {
+                System.out.println("Checking" + room + "Box" + box);
+
+                // if we found toy in box2 of room2 then
+                if (room == 2 && box == 2) {
+                    System.out.println("hey I found the toy");
+
+                    // stop the entire loop rather than finding room3>box3
+                    break Search_Home;
+                }
+
+            }
+
+        }
+        System.out.println("I Am Going play");
+    }
+}
+
+१. goto Statement (टेलिपोर्टेशनची जादू... जी Java मध्ये चालत नाही!)
+सोपे उदाहरण:
+समजा तू एक व्हिडीओ गेम खेळत आहेस. तू लेव्हल १ वर आहेस आणि अचानक एका 'मॅजिक दरवाजातून' (Magic Door) थेट लेव्हल १० वर 'टेलिपोर्ट' (Teleport) झालास. मधी काय झालं हे कोणालाच कळलं नाही! goto चे काम असेच असते - प्रोग्राममध्ये एका ठिकाणाहून थेट दुसऱ्या ठिकाणी उडी मारणे.
+
+पण Java मधील एक गुपित (Secret):
+Java मध्ये goto हा शब्द आहे (त्याला Reserved Keyword म्हणतात), पण Java तो वापरू देत नाही! का बरं? कारण जर प्रोग्राममध्ये कुठेही, कशाही उड्या मारल्या, तर तो कोड वाचायला आणि समजायला खूप कठीण होतो harder to read & maintain(ज्याला प्रोग्रामिंगच्या भाषेत 'Spaghetti Code' म्हणतात - म्हणजे मॅगी किंवा नूडल्ससारखा गुंता!). म्हणून Java ने goto ला कुलूप लावून ठेवले आहे.
+
+त्याऐवजी, सुरक्षितपणे उड्या मारण्यासाठी Java आपल्याला Labels (जे आपण काल शिकलो) वापरायला सांगते.
+
+२. continue Statement (खराब द्राक्ष फेकून द्या आणि पुढे जा!)
+continue चा अर्थ होतो: "फक्त आत्ताची वेळ (Step) सोडा आणि पुढचे काम चालू ठेवा."
+
+सोपे उदाहरण:
+समजा तू एका डब्यातून द्राक्षे (Grapes) खात आहेस. तू एक-एक करून द्राक्ष खातोस (हा झाला तुझा Loop).
+अचानक, ३ नंबरचे द्राक्ष थोडे खराब किंवा आंबट निघते.
+
+आता तू काय करशील?
+१. तू पूर्ण द्राक्षांचा डबा फेकून देशील का? नाही! (पूर्ण डबा फेकून देणे म्हणजे break;).
+२. तू फक्त ते एक खराब द्राक्ष फेकून देशील आणि पुढचे ४ थ्या नंबरचे द्राक्ष खायला सुरुवात करशील.
+
+यालाच Java मध्ये continue; म्हणतात! जेव्हा continue येतो, तेव्हा कॉम्प्युटर ती विशिष्ट फेरी (iteration) सोडून देतो आणि पुढच्या फेरीला सुरुवात करतो.
+
+public class Continue {
+
+    public static void main(String[] args) {
+        for (int grapes = 1; grapes <= 5; grapes++) {
+            System.out.println("Grapes" + grapes);
+
+            // we found 3 grapes spoiled then
+            if (grapes == 3) {
+                System.out.println("third grape is spoiled");
+                continue;
+            }
+
+        }
+        System.out.println("Skip the box");
+    }
+
+}
+
+================================Method=====================================
+a method is the block of code refered by name and can be called at any point in ur program .think of it like method is a chunk of code which can be perfromed it as a request it leads to perfomed desired actions.
+  1) methd has acccess specifier if we declared  method as a static then it wont connected to instances variable of this class but with class itself.
+
+               Method name & method Paramter = Method Signature
+ Ex:           playing(string game)
+
+why we used method?>> for code reusaibility and oncd write block of code refered it anyweher inside the program through methodname
+we used return keyword to retunr value from the method
+playing(string game){ return playing;}
+
+
+१. Pass by Value (झेरॉक्स कॉपी देण्याची पद्धत)सोपे उदाहरण:समजा, तू एका कागदावर एक खूप सुंदर चित्र काढले आहेस. तुझा मित्र म्हणतो, "मला हे चित्र दे, मी यात रंग भरणार आहे."पण तुला तुझे मूळ (Original) चित्र खराब करायचे नाही. मग तू काय करतोस? तू त्याला त्या चित्राची एक झेरॉक्स कॉपी (Photocopy) काढून देतोस.आता मित्राने त्या झेरॉक्सवर लाल रंग भरला किंवा ती फाडून टाकली, तरी तुझ्याकडच्या मूळ चित्राला काहीही फरक पडत नाही.यालाच कोडिंगमध्ये Pass by Value म्हणतात! तू फक्त किंमतीची (Value) कॉपी (Copy) पाठवतोस.
+
+२. Pass by Reference (घराची मूळ चावी देणे)सोपे उदाहरण:समजा, तू तुझ्या मित्राला तुझ्या घराची 'चावी' (Key) दिलीस. मित्र त्या चावीचा वापर करून घरात गेला आणि त्याने घरातला टीव्ही फोडला!आता काय होईल? इथे झेरॉक्स नाहीये, त्यामुळे तुझ्या मूळ (Original) घरातला टीव्ही खरंच फुटला आहे.जेव्हा तुम्ही मूळ वस्तूचा पत्ता किंवा संदर्भ (Reference/Address) देता आणि तिकडे काही बदल झाला की मूळ वस्तूही बदलते, याला Pass by Reference म्हणतात.⚠️ Java मधील सर्वात मोठे गुपित (The Ultimate Interview Secret)हा मुलाखतीचा सर्वात आवडता प्रश्न आहे!गुपित: Java मध्ये Pass by Reference अस्तित्वात नाही! Java हे पूर्णपणे आणि फक्त "Pass by Value" आहे.जेव्हा तुम्ही int, float, boolean (म्हणजेच Primitive Data Types) पाठवता, तेव्हा Java त्यांची 'झेरॉक्स कॉपी' पाठवते. (म्हणजे मूळ किंमत सुरक्षित राहते).जेव्हा तुम्ही एखादा 'Object' (उदा. Car, Student) पाठवता, तेव्हा Java त्या ऑब्जेक्टची नाही, तर ऑब्जेक्टच्या 'रिमोट कंट्रोल'ची (किंवा चावीची) झेरॉक्स कॉपी पाठवते. त्या रिमोटवरून बदल केल्यास मूळ वस्तू बदलते, पण तुम्ही तो रिमोट पूर्णपणे दुसऱ्या टीव्हीला जोडू शकत नाही!फरक (Difference Table)वैशिष्ट्यPass by Value (झेरॉक्स कॉपी)Pass by Reference (मूळ चावी)अर्थफक्त माहितीची 'कॉपी' (Copy) पाठवली जाते.मूळ वस्तूचा पत्ता (Memory Address) पाठवला जातो.बदल केल्यास काय होते?मूळ वस्तूत (Original) कोणताही बदल होत नाही.मूळ वस्तूत (Original) लगेच बदल होतो.Java मध्ये वापर?होय! (Java पूर्णपणे याच तत्त्वावर चालते).नाही! (C++ सारख्या भाषांमध्ये हे असते).
+
+in java primitive & ref types are passed by value.
+
+//Proof that Java is passby value only, not pass by reference
+class Tv {
+    String name = "Sony";// Original name
+}
+
+public class SimpleProof {
+    public static void main(String[] args) {
+        Tv myTv = new Tv();
+
+        // we are sending remotecopy to method and try to pass obj as a ref to method
+
+        tryToChangeTv(myTv);
+
+        // This is the proof that java is pass by value here will be print Sony rather
+        // than Samsung
+        System.out.println("My tv name is :" + myTv.name);
+
+    }
+
+    // we used static here because we wanna call to main method its it static so we
+    // had to written here static in order to call main method we we remove static
+    // it shows static context error
+    static void tryToChangeTv(Tv remoteCopy) {
+        remoteCopy = new Tv();
+        remoteCopy.name = "Samsung";
+
+    }
+}
+
+
+1. Q: Is Java Pass by Value or Pass by Reference? (सर्वात जास्त विचारला जाणारा प्रश्न)
+
+A: Java is strictly Pass by Value. It does not support Pass by Reference. When we pass a primitive data type, a copy of the value is passed. When we pass an object, a copy of the reference (memory address) is passed, not the actual object itself.
+
+2. Q: If Java is Pass by Value, why does changing an object's property inside a method change the original object?
+
+A: Because when you pass an object to a method, you are passing a copy of its reference. Both the original reference and the copied reference point to the exact same object in the memory (Heap). So, modifying the object's state using the copied reference will affect the original object.
+
+3. Q: Can you swap two objects in a method in Java?
+
+A: No. Since Java passes a copy of the reference, if you try to swap the references inside a method (e.g., making reference A point to object B), it only changes the copied references. The original references back in the main method remain completely unchanged.
