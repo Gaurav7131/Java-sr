@@ -534,4 +534,93 @@ public class GcdRecursion {
 }
 
 4)
+२. Arrays (डब्यांचा खेळ)
+A. Find Max Int in Array (सर्वात मोठी संख्या शोधणे)
 
+सोपे उदाहरण: एका रांगेत १० मुले उभी आहेत. आपल्याला सर्वात उंच मुलगा शोधायचा आहे. आपण पहिल्या मुलाला 'सर्वात उंच' मानतो आणि पुढच्या प्रत्येकाशी त्याची तुलना करतो.
+
+Java>>DIdinot excute
+static int findMax(int[] arr) {
+    int max = arr[0]; // पहिल्या मुलाला राजा मानले
+    for (int num : arr) {
+        if (num > max) {
+            max = num; // जर कुणी मोठा सापडला, तर त्याला नवीन राजा बनवले!
+        }
+    }
+    return max;
+}
+B. Extend Array (अॅरे मोठा करणे)
+
+सोपे उदाहरण: तुझा ५ चॉकलेट्सचा डबा भरला आहे. तू बाजारातून १० चॉकलेट्स मावणारा नवीन मोठा डबा आणतोस आणि जुने चॉकलेट्स त्यात टाकतोस.
+
+Java
+static int[] extendArray(int[] oldArray, int newSize) {
+    int[] newArray = new int[newSize]; // नवीन मोठा डबा
+    for (int i = 0; i < oldArray.length; i++) {
+        newArray[i] = oldArray[i]; // जुने सामान नवीन डब्यात टाकले
+    }
+    return newArray;
+}
+३. Strings (शब्दांची जादू)
+A. Calculate Amount of Words (वाक्यातील शब्द मोजणे)
+
+सोपे उदाहरण: एका वाक्यात किती शब्द आहेत हे मोजण्यासाठी आपण फक्त दोन शब्दांच्या मधील 'रिकामी जागा' (Space) मोजतो.
+
+Java
+static int countWords(String sentence) {
+    if (sentence == null || sentence.isEmpty()) return 0;
+    // वाक्याला स्पेसच्या आधारे तोडणे आणि डब्यांची (Array) संख्या मोजणे
+    String[] words = sentence.trim().split("\\s+");
+    return words.length;
+}
+B. Turn Each First Letter in a Word to Capital (प्रत्येक शब्दाचे पहिले अक्षर मोठे करणे)
+
+Java
+static String capitalizeWords(String str) {
+    String[] words = str.split(" ");
+    StringBuilder result = new StringBuilder();
+    for (String word : words) {
+        // पहिले अक्षर मोठे (Capital) करणे आणि उरलेला शब्द जोडणे
+        result.append(Character.toUpperCase(word.charAt(0)))
+              .append(word.substring(1)).append(" ");
+    }
+    return result.toString().trim();
+}
+४. विशेष आणि गमतीशीर प्रोग्राम्स
+A. Draw an Empty Rectangle (रिकाम्या चौकोनाचे चित्र काढणे)
+
+सोपे उदाहरण: फक्त चौकोनाच्या बॉर्डरवर (कडांवर) स्टार (*) प्रिंट करायचा आहे आणि आतमध्ये हवा (रिकामी जागा) ठेवायची आहे.
+
+Java
+static void drawEmptyRectangle(int width, int height) {
+    for (int i = 1; i <= height; i++) {
+        for (int j = 1; j <= width; j++) {
+            // जर पहिली/शेवटची लाईन असेल किंवा पहिली/शेवटची भिंत असेल तर * काढा
+            if (i == 1 || i == height || j == 1 || j == width) {
+                System.out.print("* ");
+            } else {
+                System.out.print("  "); // नाहीतर रिकामी जागा सोडा
+            }
+        }
+        System.out.println(); // नवीन लाईनवर जा
+    }
+}
+B. Convert Decimal into Roman Numbers (नंबरला रोमन अंकात बदलणे)
+
+सोपे उदाहरण: दुकानातून सुट्टे पैसे घेणे. जर तुला १४ रुपये द्यायचे असतील, तर तू आधी १० ची नोट देशील (X) आणि मग ४ रुपये (IV) देशील.
+
+static String intToRoman(int num) {
+    // आपल्याकडील नोटा आणि त्यांची रोमन नावे
+    int[] values = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+    String[] romanLetters = {"M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"};
+    
+    StringBuilder roman = new StringBuilder();
+    
+    for (int i = 0; i < values.length; i++) {
+        while (num >= values[i]) {
+            num -= values[i]; // पैसे वजा करा
+            roman.append(romanLetters[i]); // रोमन नाव जोडा
+        }
+    }
+    return roman.toString();
+}
