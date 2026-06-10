@@ -416,3 +416,122 @@ A: Because when you pass an object to a method, you are passing a copy of its re
 3. Q: Can you swap two objects in a method in Java?
 
 A: No. Since Java passes a copy of the reference, if you try to swap the references inside a method (e.g., making reference A point to object B), it only changes the copied references. The original references back in the main method remain completely unchanged.
+
+REcursion=============================
+. Recursion म्हणजे नक्की काय?
+सोपे उदाहरण: समजा तुझ्याकडे एक मोठी रशियन बाहुली आहे. तू ती उघडतोस, तर आतमध्ये तशीच पण थोडी छोटी बाहुली मिळते. तू ती छोटी बाहुली उघडतोस, तर आत आणखी छोटी बाहुली मिळते! हे असंच चालू राहतं जोपर्यंत सर्वात छोटी बाहुली (जी उघडता येत नाही) सापडत नाही.
+
+Java मध्ये, जेव्हा एखादी Method (अॅक्शन बटन) स्वतःलाच पुन्हा पुन्हा हाक मारते (Call करते), तेव्हा त्याला 'Recursive Method' म्हणतात. म्हणजेच, एक मोठं काम पूर्ण करण्यासाठी ती मेथड स्वतःलाच एका छोट्या कामासाठी बोलावते.
+
+२. थांबण्याची अट (The Base Condition) - सर्वात महत्त्वाची गोष्ट!
+जेव्हा आपण आरशासमोर दुसरा आरसा ठेवतो, तेव्हा प्रतिमा अनंत (Infinite) काळ दिसत राहते. कोडिंगमध्ये असं झालं तर कॉम्प्युटर हँग होईल! (ज्याला प्रोग्रामिंगच्या भाषेत StackOverflowError म्हणतात).
+
+म्हणून प्रत्येक Recursive Method मध्ये 'थांबण्याची अट' (Base Condition) द्यावीच लागते. (जसे की - सर्वात छोटी बाहुली सापडली की थांबणे).
+>>Recursive method>>BAse Cond>return>once callled recmethod
+
+public class Rocket {
+
+    // ही आपली Recursive Method आहे
+    static void countdown(int number) {
+        
+        // १. थांबण्याची अट (Base Condition) - जर नंबर ० झाला, तर थांब!
+        if (number == 0) {
+            System.out.println("Blast Off! रॉकेट उडाले! 🚀");
+            return; // इथून मेथड पूर्णपणे थांबते आणि बाहेर येते
+        }
+
+        // २. सध्याचा नंबर प्रिंट कर
+        System.out.println(number);
+
+        // ३. Recursion (जादू!) - मेथड स्वतःलाच पुन्हा हाक मारत आहे, पण एका कमी नंबरने!
+        countdown(number - 1);
+    }
+
+    public static void main(String[] args) {
+        System.out.println("रॉकेट उड्डाणाची तयारी सुरू:");
+        countdown(5); // ५ पासून सुरुवात करा
+    }
+}
+
+🎯 Recursion: Interview Questions (मुलाखतीचे प्रश्न)
+1. Q: What is Recursion in Java?
+
+A: Recursion is a process in which a method calls itself continuously to solve a smaller piece of the same problem.
+
+मराठीत अर्थ: जेव्हा एखादी Method स्वतःलाच पुन्हा पुन्हा हाक मारते, तेव्हा त्याला Recursion म्हणतात.
+
+2. Q: What is a "Base Condition" (or Base Case) in recursion, and why is it important?
+
+A: A base condition is the stopping point for the recursive method. It is important because without it, the method will keep calling itself infinitely.
+
+मराठीत अर्थ: ही एक 'थांबण्याची अट' आहे. ही अट दिली नाही तर मेथड स्वतःला हाक मारणे कधीच थांबवणार नाही.
+
+3. Q: What happens if you don't provide a Base Condition in a recursive method?
+
+A: The program will result in infinite recursion. It will quickly run out of memory and crash by throwing a StackOverflowError.
+
+मराठीत अर्थ: प्रोग्राम अनंत काळ चालत राहील आणि कॉम्प्युटरची मेमरी भरून तो StackOverflowError देईल.
+
+4. Q: Recursion vs Iteration (Loops) - Which one is better?
+
+A: Iteration (using loops like for or while) is generally faster and uses less memory. However, Recursion is preferred when solving complex mathematical problems or working with complex data structures (like Trees and Graphs) because it makes the code much cleaner and easier to read.
+
+मराठीत अर्थ: Loops मेमरी वाचवतात आणि फास्ट असतात. पण जेव्हा खूप गुंतागुंतीचे प्रॉब्लेम्स सोडवायचे असतात, तेव्हा Recursion मुळे कोड खूप सोपा आणि वाचायला सुटसुटीत होतो.
+
+5. Q: Can you give a real-world example of recursion?
+
+A: Yes! A perfect example is a set of Russian Nesting Dolls, where opening one doll reveals a smaller, identical doll inside, until you reach the smallest one that cannot be opened (which acts as the base condition).
+
+
+Example>>Factorial using recursion
+class FactRecursion {
+
+    // recusive method
+    static int fact(int n) {
+        // base cond
+        if (n == 0)
+            return 1;
+        return n * fact(n - 1);
+
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Factorial is:" + fact(5));
+
+    }
+}
+
+
+2)
+public class FiboRecusion {
+
+    // recurisve method
+    static int fibo(int n) {
+        if (n <= 1)
+            return n;
+        return fibo(n - 1) + fibo(n - 2);
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Fibonaccie is:" + fibo(12));
+
+    }
+}
+
+3)Greatest coomon Divisor
+public class GcdRecursion {
+
+    // recurisve method
+    static int Gcd(int a, int b) {
+        // base cond
+        if (b == 0)
+            return a; // if B{2nd no} is 0, then A{1st no} will be answer
+        return Gcd(b, a % b);// find rem.
+    }
+    public static void main(String[] args) {
+        System.out.println("Gcd is:" + Gcd(10, 5));
+    }
+}
+
+4)
+
