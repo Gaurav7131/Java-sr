@@ -1,3 +1,4 @@
+//Enum 
 enum Tshirt {
     SMALL(100),
     MEDIUM(200),
@@ -6,12 +7,11 @@ enum Tshirt {
     // set price
     int price;
 
-    // constructor for price
     Tshirt(int p) {
         price = p;
+
     }
 
-    // get price of t shirt
     public int getPrice() {
         return price;
 
@@ -20,24 +20,25 @@ enum Tshirt {
 
 class Enum {
     public static void main(String[] args) {
-        System.out.println("Welcome to shop");
-        // Tshirt size
-        Tshirt mysize = Tshirt.MEDIUM;
-        System.out.println("urs chose size" + mysize);
-        System.out.println("Price is:" + mysize.getPrice());
+        System.out.println("Welcome to Shop");
 
-        // compare size
+        // ur chose size and thier price
+        Tshirt mysize = Tshirt.MEDIUM;
+        System.out.println("Urs choose size is:" + mysize);
+        System.out.println("Price is" + mysize.getPrice());
+
+        // comapre with ==
         if (mysize == Tshirt.MEDIUM) {
             System.out.println("Suits u");
         } else {
-            System.out.println("Not suits u");
-
+            System.out.println("not suits u");
         }
 
-        // check all avaialaible size using values methof
+        // check all size and their prices in shop
         for (Tshirt size : Tshirt.values()) {
-            System.out.println("size" + size + "|price is" + size.getPrice());
-        }
+            System.out.println("Size" + size);
+            System.out.print("Price is $" + size.getPrice());
 
+        }
     }
 }
