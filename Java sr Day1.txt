@@ -706,4 +706,151 @@ class Enum {
 }
 
 example>.mesaage priority
+enum Priority {
+    INFO(10),
+    WARNING(20),
+    EMERGENCY(30);
+
+    int setPriority;
+
+    // construcotor for Priorty no set
+    Priority(int setP) {
+        setPriority = setP;
+
+    }
+
+    // method to get Priority
+    public int getPriority() {
+        return setPriority;
+    }
+}
+
+public class MsgEnum {
+    public static void main(String[] args) {
+        System.out.println("Priority Levels");
+
+        Priority myPriority = Priority.EMERGENCY;
+        System.out.println("URs prioirty is:" + myPriority);
+        System.out.println("Levels of priority" + myPriority.getPriority());
+
+        // compare
+        if (myPriority == Priority.EMERGENCY) {
+            System.out.println("Ready to take actions");
+        } else {
+            System.out.println("Ignore it");
+
+        }
+        // check avaiabalble one and their setp not dependasnt on first get method
+        // for(variable)
+        for (Priority p : Priority.values()) {
+            System.out.println("Priority is" + p.getPriority());
+        }
+    }
+}
+
+========================================OOPS============================================================
+what is oops?It is objected oriented s/q design approach in which concept of "object"occupies first place.
+
+obj=data + prop 
+class=building plan
+df betn functoinal programming and oop
+ fp>>main concepts is function| object
+  fp aproach works best where u dont care about fucntions exection order| allows u to orgniaze code adn program ex.in structured way
+advnaatges>>Modularity,scalability,security(Encapsulation),low cost of development(reusability)inheritance.
+
+1)Class>>Blueprint of obj/Types of classes1)
+
+१. Concrete Class (पूर्ण बनलेलं खेळणं)
+सोपे उदाहरण: कारखान्यातून पूर्णपणे तयार होऊन आलेला 'रोबोट'. ज्याचे हात, पाय, बटणे सगळं काही काम करतंय.
+
+Java मध्ये अर्थ: हा आपला नेहमीचा साधा क्लास असतो. यात कोणतीही गोष्ट अपूर्ण नसते. आपण याचा थेट Object (नवीन खेळणं) बनवू शकतो.
+
+२. Abstract Class आणि abstract कीवर्ड (अपूर्ण ब्ल्यूप्रिंट)
+सोपे उदाहरण: समजा तू एका 'कार' चं डिझाईन बनवलं. तू टायर, स्टिअरिंग सगळं बनवलंस, पण "कारचा रंग कोणता असेल?" आणि "इंजिन किती पॉवरचं असेल?" या जागा रिकाम्या सोडल्यास. तू म्हणालास: "जेव्हा कोणी ही डिझाईन वापरेल (Inherit करेल), तेव्हा तो त्याचा रंग आणि इंजिन ठरवेल."
+
+abstract म्हणजे काय?: abstract या शब्दाचा अर्थच होतो 'अपूर्ण' किंवा 'फक्त कल्पना'. जेव्हा आपण एखाद्या क्लास किंवा काम (Method) च्या पुढे abstract लिहितो, तेव्हा Java ला समजते की हे काम कसं करायचं हे आत्ता पूर्णपणे सांगितलेले नाही.
+
+(टीप: अपूर्ण डिझाईनवरून आपण कधीच गाडी बनवू शकत नाही, म्हणूनच Abstract Class चा Object बनवता येत नाही!)
+
+३. Final Class (कुलूप लावलेली तिजोरी)
+सोपे उदाहरण: कोका-कोलाची सिक्रेट रेसिपी! ती फायनल आहे. कोणीही ती रेसिपी चोरून स्वतःच्या नावाने (Inherit करून) "माझी कोका-कोला" बनवू शकत नाही.
+
+Java मध्ये अर्थ: ज्या क्लासच्या आधी final शब्द लावला जातो, त्याचा कोणीही 'Child' क्लास बनवू शकत नाही (No Inheritance). हे सुरक्षिततेसाठी वापरतात.
+
+४. Nested Class (डब्यात डबा)
+सोपे उदाहरण: शाळेच्या मोठ्या बॅगेच्या आत असलेला एक छोटा 'कंपास बॉक्स' (Pocket). तो कंपास बॉक्स पूर्णपणे त्या बॅगेचाच हिस्सा आहे.
+
+Java मध्ये अर्थ: जेव्हा एका Class च्या आत दुसरा Class लिहिला जातो, तेव्हा त्याला Nested Class म्हणतात. जर आतल्या क्लासचे काम फक्त बाहेरच्या क्लासपुरतेच मर्यादित असेल, तर आपण हे वापरून आपला कोड एकदम सुटसुटीत बनवतो.
+
+५. POJO Class (साधी कॅरीबॅग)
+सोपे उदाहरण: दुकानातून मिळालेली एक साधी प्लास्टिकची पिशवी. तिचं काम फक्त सामान (वस्तू) इथून तिथे नेऊन देणं आहे. तिला कोणतीही फॅन्सी बटणे किंवा लॉक नसतं.
+
+Java मध्ये अर्थ: POJO म्हणजे "Plain Old Java Object". हा असा क्लास आहे ज्यात कोणतंही मोठं लॉजिक नसतं. यात फक्त डबे (Variables) आणि त्या डब्यात माहिती टाकण्यासाठी/काढण्यासाठी Getter/Setter मेथड्स असतात (उदा. Database मधून माहिती आणून दाखवणारा क्लास).
+
+६. Anonymous Class (एका दिवसाचा कामगार)
+सोपे उदाहरण: समजा तुझ्या घरातला नळ अचानक खराब झाला. तू रस्त्यावरून एका अनोळखी प्लंबरला बोलावतोस, तो काम करतो आणि निघून जातो. तू त्याचं 'नाव' विचारत नाहीस आणि त्याला परत कधी बोलावणारही नसतोस.
+
+Java मध्ये अर्थ: ज्या क्लासला स्वतःचं 'नाव' नसतं! जेव्हा आपल्याला एखादा क्लास फक्त 'एकदाच' आणि 'लगेच' (on-the-fly) वापरायचा असतो, तेव्हा आपण Anonymous Class बनवतो.
+
+🎯 30 LPA Package: Fresher Interview Questions
+भावा, ३० लाखांच्या पॅकेजसाठी (30 LPA) इंटरव्ह्यूअर तुला "Abstract Class म्हणजे काय?" असे साधे प्रश्न विचारणार नाही. ते तुझ्या लॉजिकची आणि मेमरी मॅनेजमेंटची परीक्षा घेणारे 'गुगली' (Tricky) प्रश्न विचारतील. खालील प्रश्न आणि त्यांची उत्तरे डोक्यात फिट ठेव:
+
+1. Q: Can an Abstract class have a constructor? If we cannot create an object of an abstract class, then why does it have a constructor? (सर्वात जास्त विचारला जाणारा गुगली प्रश्न!)
+
+A (मराठीत अर्थ): होय, Abstract Class मध्ये Constructor असू शकतो! जरी आपण Abstract Class चा थेट Object बनवू शकत नसलो, तरी जेव्हा त्याचा 'Child Class' जन्माला येतो, तेव्हा तो Child Class सर्वात आधी आपल्या Parent च्या (म्हणजेच Abstract Class च्या) Constructor ला हाक मारतो (super() चा वापर करून). Parent च्या आतले डबे (variables) सेट करण्यासाठी याची गरज असते.
+
+2. Q: Why is the String class made final in Java?
+
+A (मराठीत अर्थ): String क्लास final आहे कारण सुरक्षेच्या (Security) आणि मेमरीच्या (String Pool) कारणास्तव तो कोणीही बदलू नये. जर कोणी String क्लासला Inherit करून त्याचं काम बदललं, तर पूर्ण Java सिस्टीममध्ये गडबड होऊ शकते (उदा. हॅकर्स पासवर्ड साठवण्याची पद्धत बदलू शकतात).
+
+3. Q: What is the exact difference between a POJO and a Java Bean?
+
+A (मराठीत अर्थ): सर्व Java Beans हे POJO असतात, पण सर्व POJO हे Java Beans नसतात! Java Bean ला काही कडक नियम पाळावे लागतात (जसे की implements Serializable असणे, No-argument constructor असणे आणि सर्व variables private असणे). POJO हा एकदम साधा आणि कोणत्याही बंधनात नसलेला क्लास असतो.
+
+//POJo class hold only variables,getter setter method
+class ToyData {
+    String name = "Baby Toy";
+}
+
+// abstract class has no body,incomlete blueprint and task too
+abstract class Blueprint {
+    abstract void Play();
+}
+
+// concentrete(comlete fully functional class)+final(treasure) class hired to
+// complete incomlete task of abstarct class
+final class Robot extends Blueprint {
+
+    // nested class
+    class Battery {
+
+        void Power() {
+            System.out.println("Power is On");
+        }
+    }
+
+    void Play() {
+        System.out.println("Playing");// incomplete task comleted here
+    }
+}
+
+public class TypesOfClass {
+    public static void main(String[] args) {
+        Robot myRobot = new Robot();
+        myRobot.Play();
+
+        // nested class obj
+        Robot.Battery bt = myRobot.new Battery();
+        bt.Power();
+
+        // anonymous class dont have name,work like intern do their work and on the fly
+        Blueprint b = new Blueprint() {
+            void Play() {
+                System.out.println("Magic");
+            }
+        };
+        b.Play();
+
+    }
+}
 
