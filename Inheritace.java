@@ -26,7 +26,7 @@ class SmartPhone extends BasicPhone {
 
     // child method
     void SmartDetails() {
-        System.out.println("Details of SmartPhone");
+        System.out.println("Details of SmartPhone:" + super.brand);
         super.Calling();
         System.out.println("Feature:" + feature);
     }
