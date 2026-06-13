@@ -1,6 +1,6 @@
 //Parent class>Parent constructor>Parent method>Child class extends parent class>Child constructor SUper()>Child Method>main method instnaceof test
 class BasicPhone {
-    String brand = "Nokia";
+    String brand = "Nokia OEM";
 
     // Parent class Constructor
     BasicPhone() {
