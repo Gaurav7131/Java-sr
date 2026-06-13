@@ -840,8 +840,8 @@ public class TypesOfClass {
         myRobot.Play();
 
         // nested class obj
-        Robot.Battery bt = myRobot.new Battery();
-        bt.Power();
+        Robot.Battery battery = myRobot.new Battery(); // varible Rbot class's because Battery>>Power (inner class)
+        battery.Power();
 
         // anonymous class dont have name,work like intern do their work and on the fly
         Blueprint b = new Blueprint() {
@@ -853,4 +853,139 @@ public class TypesOfClass {
 
     }
 }
+==================================Interface==================
+१. Interface (इंटरफेस) म्हणजे नक्की काय?
+सोपे उदाहरण (Real-World Scenario): समजा तुला एका क्रिकेट टीममध्ये खेळायचं आहे. कोच तुला एक कागद देतो ज्यावर काही नियम (Contract/करार) लिहिलेले आहेत. त्यावर लिहिलंय: १. "तुला बॅटिंग करावी लागेल", २. "तुला फिल्डिंग करावी लागेल".
+तो कागद तुला बॅटिंग कशी करायची हे शिकवत नाही, तो फक्त सांगतो की हे करावंच लागेल! जो खेळाडू हा करार साईन करेल (ज्याला Java मध्ये implements म्हणतात), त्याला स्वतःच्या स्टाईलने बॅटिंग करावीच लागेल.
 
+Java मध्ये अर्थ: Interface म्हणजे फक्त 'नियमांची यादी'. हे क्लासला सांगते की "काय करायचे आहे" (What to do), पण "कसे करायचे" (How to do) हे क्लासने स्वतः ठरवायचे असते.
+
+२. Interface मध्ये काय काय असते? (What does it consist of?)
+Interface मध्ये मुख्यत्वे दोनच गोष्टी असतात:
+
+अपूर्ण कामे (Abstract Methods): ज्यांना बॉडी ( { } ) नसते. फक्त कामाचे नाव असते. (उदा. void playCricket();)
+
+फिक्सड माहिती (Constants): यातील डबे नेहमी public static final असतात. म्हणजे एकदा किंमत दिली की ती कोणीही बदलू शकत नाही. (उदा. int TEAM_SIZE = 11;).
+
+(प्रो-टीप: Java 8 आणि त्यानंतर, Interface मध्ये आपण काही पूर्ण कामे सुद्धा लिहू शकतो, ज्यांना default आणि static मेथड्स म्हणतात. पण त्याचा मुख्य उद्देश नियमावली बनवणे हाच असतो.)
+
+३. Abstract Class विरुद्ध Interface (Abstract Class vs Interface)
+हे दोन्ही थोडे सारखे वाटतात, पण त्यांच्यात खूप मोठा फरक आहे:
+
+Abstract Class (अपूर्ण कार): ही अशी कार आहे जिचे काही पार्ट्स (उदा. स्टिअरिंग, सीट) आधीच लावले आहेत, पण इंजिन लावायचे बाकी आहे. यात पूर्ण आणि अपूर्ण दोन्ही कामे (Methods) असू शकतात.
+
+सर्वात मोठा नियम: Java मध्ये तू एकावेळी फक्त एकाच Abstract Class ला extends (वारसा हक्क) करू शकतोस.
+
+Interface (फक्त नियमावली): हे फक्त एक 'मॅन्युअल' किंवा 'चेकलिस्ट' आहे. यात स्वतःचं असं काहीच बनवलेलं नसतं.
+
+सर्वात मोठा फायदा: Java मध्ये एक क्लास एकाच वेळी अनेक (Multiple) Interfaces ला implements (करारावर सही) करू शकतो! (म्हणजे तू एकाच वेळी 'क्रिकेटचा करार' आणि 'फुटबॉलचा करार' साईन करू शकतोस).
+
+४. Class vs Interface vs Type (टेबलमध्ये तुलना)भावा, हा टेबल मुलाखतीसाठी (Interview) एकदम डोक्यात फिट करून ठेव:
+वैशिष्ट्य (Feature)Class (क्लास)Interface (इंटरफेस)Type (टाईप / प्रकार)१० वर्षाच्या मुलासाठी अर्थप्रत्यक्ष खेळणं (Object) बनवण्याचा 'कारखाना'.खेळण्याने कसं वागावं, | याचा 'करार' किंवा 'नियम'.'टाईप' हा एक मोठा शब्द (कॅटेगरी) आहे. |हा सांगतो की वस्तू कोणत्या प्रकारची आहे.
+पूर्ण कामे (Methods) आणि माहितीचे डबे (Variables).|मुख्यत्वे अपूर्ण कामे (Abstract Methods) आणि फिक्सड व्हॅल्यूज.|Class, Interface, Enum, Arrays हे सर्व 'Types' चेच वेगवेगळे प्रकार आहेत.
+Object (खेळणं) बनवता येतो?होय! (new कीवर्ड वापरून आपण थेट ऑब्जेक्ट बनवू शकतो).नाही! (कारण कामे अपूर्ण असतात, मॅन्युअलवरून वस्तू बनत नाही).नाही. (हा फक्त एक गट/कॅटेगरी ओळखण्याचा शब्द आहे).
+कीवर्ड (Keyword)classinterface(यासाठी कोणताही विशिष्ट कीवर्ड नसतो).
+कसे जोडतात?एका क्लासला दुसऱ्या क्लासशी जोडायला extends वापरतात.एका क्लासला इंटरफेसचे नियम लावायला implements वापरतात.उदा. आपण म्हणतो "String हा एक Type आहे", "Robot हा एक Type आहे".
+
+>>>>>>>>Inertafce name>>Asbatrct method>Contract signed class(implements) calling abstarct method
+interface Cricket {
+    // fixed
+    int TEAM_SIZE = 11;
+
+    // asbstract method has no body so>
+    void PlayBatting();
+
+    void PlayFielding();
+}
+
+// Contract signed class so implememts interface
+class Player implements Cricket {
+    public void PlayBatting() {
+        System.out.println("Batting");
+
+    }
+
+    public void PlayFielding() {
+        System.out.println("Fielding");
+    }
+}
+
+// main class
+public class Interface {
+    public static void main(String[] args) {
+        Player virat = new Player();
+
+        virat.PlayBatting();
+        virat.PlayFielding();
+
+        System.out.println("Team Size is:" + Cricket.TEAM_SIZE);
+
+    }
+}
+
+
+
+🔥 30 LPA Interface Interview Questions:
+Q1. "Diamond Problem" - जर एका क्लासने २ इंटरफेस implements केले आणि दोन्ही इंटरफेसमध्ये एकाच नावाची default मेथड असेल, तर काय होईल?
+
+इंटरव्ह्यूअर काय चेक करतोय? तुला Java 8 चे नवीन फीचर्स माहित आहेत का.
+
+कडक उत्तर (Answer): "सर/मॅडम, इथे Compile-time Error येईल! कारण Java ला समजणार नाही की नेमकी कोणत्या इंटरफेसची मेथड वापरायची. यालाच 'Diamond Problem' म्हणतात. हा error सोडवण्यासाठी, आपल्याला त्या क्लासमध्ये ती मेथड स्वतः Override करावी लागेल आणि आतमध्ये FirstInterface.super.methodName(); असं लिहून सांगावं लागेल की मला कोणाची मेथड वापरायची आहे."
+
+Q2. Functional Interface म्हणजे काय? आणि @FunctionalInterface Annotation लिहिलं नाही तर काय होईल?
+
+इंटरव्ह्यूअर काय चेक करतोय? तुला Lambda Expressions चा बेस माहित आहे का.
+
+कडक उत्तर (Answer): "ज्या इंटरफेसमध्ये फक्त आणि फक्त एकच अपूर्ण (Abstract) काम (Method) असते, त्याला Functional Interface म्हणतात (उदा. Runnable). याचा वापर Lambda Expressions साठी होतो.
+जर आपण @FunctionalInterface लिहिलं नाही, तरीही तो चालतो! पण हे लिहिणे सुरक्षित असते, कारण उद्या चुकून कोणी दुसरा डेव्हलपर आला आणि त्याने दुसरी abstract मेथड ऍड केली, तर पूर्ण प्रोग्राम क्रॅश होईल. हे annotation त्याला ती दुसरी मेथड ऍड करण्यापासून रोखते."
+
+Q3. इंटरफेसमधील डबे (Variables) नेहमी public static final का असतात? Java ने असा नियम का बनवला?
+
+इंटरव्ह्यूअर काय चेक करतोय? तुझं लॉजिक आणि मेमरी मॅनेजमेंट.
+
+कडक उत्तर (Answer): * public: कारण इंटरफेस हा एक 'करार' आहे, जो जगात कुठेही (कोणत्याही क्लासमध्ये) वाचता आला पाहिजे.
+
+static: कारण आपण इंटरफेसचा Object बनवू शकत नाही. Object नसेल तर variable ला कॉल कसा करणार? म्हणून ते क्लास-लेव्हलवर (static) ठेवावे लागते.
+
+final: जर एका इंटरफेसचे ५ Child क्लासेस असतील आणि एकाने त्या variable ची किंमत बदलली, तर बाकीच्या ४ मध्ये गोंधळ (Chaos) उडेल! म्हणून ती किंमत कोणीही बदलू नये यासाठी ती final (Constant) असते.
+
+Q4. "Marker Interface" म्हणजे काय? Java 5 मध्ये Annotations आल्यावर आपण अजूनही Marker Interfaces का वापरतो?
+
+इंटरव्ह्यूअर काय चेक करतोय? तुझा Java चा इतिहास आणि Deep Knowledge.
+
+कडक उत्तर (Answer): "ज्या इंटरफेसमध्ये एकही मेथड नसते (Empty Interface), त्याला Marker Interface म्हणतात (उदा. Serializable, Cloneable). हे फक्त JVM (Java Virtual Machine) ला एक 'सिग्नल' देतात की या क्लासकडे काहीतरी स्पेशल पॉवर आहे.
+Annotations आल्यामुळे Marker Interface चा वापर कमी झाला आहे, पण आपण ते अजूनही वापरतो कारण ते 'Polymorphism' (एकाच गोष्टीची अनेक रूपे) आणि Compile-time type checking ला सपोर्ट करतात, जे Annotations थेट करू शकत नाहीत."
+
+Q5. Architecture Level: मला "Multiple Inheritance" हे कारण सोडून सांग की, तू 'Abstract Class' कधी बनवशील आणि 'Interface' कधी बनवशील?
+
+इंटरव्ह्यूअर काय चेक करतोय? तू खऱ्या प्रोजेक्टमध्ये डिझाईन कसे करशील.
+
+कडक उत्तर (Answer): * "जेव्हा मला '**Is-a**' (हा त्याचाच प्रकार आहे) असं नातं दाखवायचं असेल, तेव्हा मी Abstract Class वापरेन. (उदा. कुत्रा हा एक प्राणी आहे -> Dog is an Animal). इथे मला काही कॉमन गोष्टी (जसे की श्वास घेणे) सगळ्यांसाठी एकदाच लिहून ठेवायच्या असतात.
+
+पण जेव्हा मला '**Can-do**' (हा हे करू शकतो) असं नातं दाखवायचं असेल, तेव्हा मी Interface वापरेन. (उदा. विमान उडू शकतं, आणि पक्षी पण उडू शकतो. विमान आणि पक्षी यांच्यात काहीच नातं नाहीये, पण दोघांकडे 'उडायची पॉवर' आहे -> Flyable Interface). इंटरफेस फक्त 'काय करायचं' हे सांगतो, 'कसं करायचं' हे ते स्वतः ठरवतात."
+
+==========================================Inheritance===============================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Progrma Pattern>>Parent class>>Parent Constructor>>Parent Method(Action)>class child extends>child constructor super()>Child Method 
