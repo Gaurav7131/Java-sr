@@ -27,7 +27,7 @@ public class StaticKeyword {
         // dynaimic binding method overriding extend base with Child Subclass
         Base b = new Child();
         // compile time compiler know which method he has to called
-        b.display();
+        // b.display();
         // dynamic runtime jvm decide the obj
         b.show();
 

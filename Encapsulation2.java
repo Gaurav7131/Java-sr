@@ -18,6 +18,15 @@ class Base {
             System.out.println("Current age" + setage);
         }
     }
+
+    public void Setname(String setname) {
+        if (setname == name) {
+            System.out.println("Name Matched");
+        } else {
+            this.name = setname;// if age is valid trch add kr setage mdhe
+            System.out.println("Current Name" + setname);
+        }
+    }
 }
 
 // child class
@@ -36,7 +45,8 @@ public class Encapsulation2 {
         c.Show();
 
         Base b = new Base();
-        b.Setage(-1);
+        b.Setage(-1);// setage
+        b.Setname("Confidential");// setname if i changed string it goes in else
     }
 
 }
