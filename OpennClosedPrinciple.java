@@ -49,18 +49,3 @@ class OpennClosedPrinciple {
         ps.playGame(gta);
     }
 }
-
-/*
- * class PlayStation{
- * public void PlayGame(String game){
- * if(game.equals(Mario)){
- * Sout("Mario st ");
- * }else if (game.equals(Spiderman)){
- * SOut("Spiderman Starting");
- * }
- * //if we want to add new features or game we want to make chnages in if/else
- * loop
- * if could halt other program flow =(tight coupling)
- * }
- * 
- */
