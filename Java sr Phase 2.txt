@@ -1,0 +1,197 @@
+१. SOLID Principles म्हणजे काय? (What is SOLID?)
+सोपे उदाहरण: जेव्हा तू लेगो (Lego) ठोकळ्यांनी एक छोटंसं 'खेळण्यातलं घर' बनवतोस, तेव्हा तू कोणताही ठोकळा कुठेही लावू शकतोस. पण जर तुला एक १०० मजली 'खऱ्या गगनचुंबी इमारत' (Skyscraper) बांधायची असेल, तर तुला इंजिनिअरिंगचे कडक नियम पाळावे लागतील, नाहीतर ती इमारत कोसळेल!
+
+Java मध्ये अर्थ: जेव्हा आपला कोड खूप मोठा होतो, तेव्हा तो वाचायला सोपा राहावा, त्यात बदल करणे सोपे जावे आणि त्यात चुका (Bugs) कमी याव्यात, यासाठी Robert C. Martin (Uncle Bob) यांनी ५ महत्त्वाचे नियम बनवले. या ५ नियमांच्या पहिल्या अक्षरांना मिळून S.O.L.I.D म्हणतात.
+
+S - Single Responsibility Principle
+
+O - Open/Closed Principle
+
+L - Liskov Substitution Principle
+
+I - Interface Segregation Principle
+
+D - Dependency Inversion Principle
+
+२. Single Responsibility Principle (SRP) - पहिला नियम
+नियम: "एका क्लासकडे बदलण्याचे फक्त एकच कारण असले पाहिजे." (A class should have only one reason to change.) साध्या भाषेत सांगायचे तर: एका माणसाने एकच काम करावे!
+
+ सोपे उदाहरण (The Restaurant Scenario):
+
+चुकीची पद्धत (SRP मोडणे): समजा एका हॉटेलमध्ये 'रामु' नावाचा एकच माणूस आहे. तोच स्वयंपाक (Cooking) करतो, तोच गिऱ्हाईकांना जेवण वाढतो (Serving) आणि तोच पैसे घेतो (Cashier). जर रामु आजारी पडला, तर संपूर्ण हॉटेलच बंद पडेल! आणि जर त्याला नवीन डिश शिकायची असेल, तर त्याला इतर कामे थांबवावी लागतील.
+
+बरोबर पद्धत (SRP पाळणे): हॉटेलमध्ये ३ वेगवेगळी माणसे ठेवा.
+१. Chef (फक्त जेवण बनवेल)
+२. Waiter (फक्त जेवण वाढेल)
+३. Cashier (फक्त पैशांचा हिशोब ठेवेल)
+आता जर नवीन डिश मेन्यूमध्ये आली, तर फक्त Chef ला नवीन गोष्टी शिकाव्या लागतील, Waiter आणि Cashier ला काहीही फरक पडणार नाही!
+
+Java मध्ये अर्थ: एक Class फक्त एकाच गोष्टीसाठी जबाबदार असला पाहिजे. जर एकाच क्लासमध्ये तुम्ही Database चे कनेक्शन, UI चे डिझाईन आणि Business Logic सगळं कोंबून ठेवलं, तर भविष्यात कोड बदलताना खूप मोठा गोंधळ होईल.
+
+Q1: What are the SOLID principles in Java?
+
+A: SOLID is an acronym for five object-oriented design principles intended to make software designs more understandable, flexible, and maintainable. They are: Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion.
+
+Q2: Can you explain the Single Responsibility Principle (SRP)?
+
+A: SRP states that a class should have one, and only one, reason to change. This means a class should only have one primary job or responsibility. For example, a class that handles database connections should not also be responsible for formatting the output to the user.
+
+Q3: Why is the Single Responsibility Principle important?
+
+A: It makes the code highly maintainable and easier to test. If a class has multiple responsibilities, changing one part of the code might accidentally break another part (high coupling). SRP ensures that changes are isolated, reducing the risk of introducing new bugs.
+
+Q4: How do you identify if a class is violating SRP?
+
+A: If you find yourself using words like "AND" when describing what a class does (e.g., "This class processes payments and sends email receipts"), it is likely violating SRP. Also, if a class has thousands of lines of code or requires imports from completely unrelated packages, it's a strong sign it's doing too much.
+
+//Voilating SRP beacuase One class>Diffenent Resp/Action/Job|| on man 3 task that's unfair
+class Restaurant {
+    // Cooking
+    void cookRest() {
+        System.out.println("Cooking");
+    }
+
+    // Cashier
+    void cashRest() {
+        System.out.println("Cashier");
+    }
+
+    // Cleaning
+    void cleanRest() {
+        System.out.println("Cleaning");
+    }
+
+}
+
+// Correct Way SRP: Single class-SIngle Resp/Action/Job ||1-1
+// Class 1:Cooking
+class Chef {
+    void cookRest() {
+        System.out.println("Cooking");
+    }
+
+}
+
+// Class2:Cashier
+class Cashier {
+    void cashRest() {
+        System.out.println("Cashier");
+    }
+}
+
+// class3:Cleaning
+class Cleaning {
+    void cleanRest() {
+        System.out.println("Cleaning");
+    }
+}
+
+class SingleResponsibilty {
+    public static void main(String[] args) {
+        Chef c = new Chef();
+        c.cookRest();
+
+        Cashier cs = new Cashier();
+        cs.cashRest();
+
+        Cleaning cl = new Cleaning();
+        cl.cleanRest();
+
+    }
+}
+
+=========================================OpenCLosed Principle=============================================================
+
+सोपे उदाहरण: PlayStation आणि Game CDs
+कल्पना कर, तुझ्याकडे एक PlayStation (PS5) आहे.
+
+Closed (बंद): जर तुला नवीन 'Spider-Man' गेम खेळायचा असेल, तर तू तुझा PlayStation स्क्रू ड्रायव्हरने उघडून आतल्या वायर कापून नवीन गेम फिट करतोस का? नाही! PlayStation आतून बदलण्यासाठी 'बंद' (Closed) आहे.
+
+Open (उघडा): तू फक्त दुकानातून Spider-Man ची नवीन 'CD (Disc)' आणतोस आणि PlayStation मध्ये टाकतोस. PlayStation नवीन गेम्स चालवण्यासाठी 'उघडा' (Open for Extension) आहे.
+
+OCP चा साधा अर्थ: तुझा मुख्य क्लास (PlayStation) असा बनवा की उद्या नवीन फीचर (नवीन गेम) आले, तर मुख्य क्लासला अजिबात हात न लावता फक्त नवीन क्लास (नवीन CD) जोडून काम झाले पाहिजे!
+
+Q1: What is the Open/Closed Principle (OCP)?
+
+A: The Open/Closed Principle states that software entities (classes, modules, methods) should be open for extension but closed for modification. This means you should be able to add new functionality without altering existing, tested code.
+
+Q2: How do we achieve OCP in Java?
+
+A: We primarily achieve OCP by using Abstraction (Interfaces and Abstract Classes) and Polymorphism. Instead of using tightly coupled if-else or switch statements to check for specific types, we program to an interface so that new behaviors can be added by simply creating new classes that implement the interface.
+
+Q3: Why is violating OCP considered bad practice?
+
+A: Modifying existing code introduces the risk of creating new bugs in already working and tested features. It also makes the class larger, harder to read, and tightly coupled, which violates the Single Responsibility Principle as well.
+
+Q4: How can you quickly identify if a class is violating OCP?
+
+A: If a class contains massive if-else or switch statements that check the type or state of an object to determine behavior (e.g., if (type == "A") doThis() else if (type == "B") doThat()), it is highly likely violating OCP. Any new type will force a modification of this logic.
+
+
+// BAD CODE old : OCP मोडला
+class PlayStation {
+    public void playGame(String gameName) {
+        if (gameName.equals("Mario")) {
+            System.out.println("Playing Mario: Jump!");
+        } else if (gameName.equals("GTA")) {
+            System.out.println("Playing GTA: Vroom!");
+        }
+        // उद्या "Spider-Man" आला, तर हा क्लास बदलावा लागेल!
+    }
+}
+
+program pattern:take interface invoke mwthod without body 2)take seperate class n invoke inteerface's method>open for Extension 3)class playstation>playGame method>>closed for Modification 4)main method mdhe Closed for Modification
+
+interface Gamecd {
+    void start();//abstarct method no body
+}
+
+// old class
+// class1;Mario
+class Mario implements Gamecd {
+    public void start() {
+        System.out.println("Mario Start");
+    }
+}
+
+// class2:Spiderman
+class Spiderman implements Gamecd {
+    public void start() {
+        System.out.println("Spiderman Starting");
+    }
+}
+
+// new class adding Open for Extension
+class GTA implements Gamecd {
+    public void start() {
+        System.out.println("GTA Starting");
+    }
+}
+
+// Closed for Modification
+class Playstation {
+    public void playGame(Gamecd cd) {
+        cd.start();
+    }
+}
+
+class OpennClosedPrinciple {
+    public static void main(String[] args) {
+        Playstation ps = new Playstation();
+
+        // insert cd
+        // insert Mario cds
+        Mario mr = new Mario();
+        ps.playGame(mr);//Playstation>PlayGame
+
+        // insert SPiderman
+        Spiderman sm = new Spiderman();
+        ps.playGame(sm);
+
+        // insert Gta cd
+        GTA gta = new GTA();
+        ps.playGame(gta);
+    }
+}
+
+******If i want any file to prevent it from hosting on Github===========1)create .gitignore file add file_name 2)terminal> git rm --cached "File_name.txt"
