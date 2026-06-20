@@ -1,6 +1,5 @@
 public class ExceptionHandling {
     public static void main(String[] args) {
-
         try {
             System.out.println("hii");
             int[] a = new int[5];
@@ -13,11 +12,10 @@ public class ExceptionHandling {
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("ArrayIndex Problem Solved");
         }
+
         // Parant excpetion(Most general)
         catch (Exception e) {
             System.out.println("I will Handle Exception" + e);
         }
-
     }
-
 }
