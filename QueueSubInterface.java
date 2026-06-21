@@ -11,8 +11,8 @@ public class QueueSubInterface {
 
         System.out.println("Total Queue:" + q);
 
-        // poll:remove first el from FRONT FIFO
-        String p = q.poll();
+        // poll:remove first e from FRONT FIFO
+        q.poll();
         System.out.println("Poll:" + q);
 
         // Add to END
