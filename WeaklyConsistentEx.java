@@ -14,6 +14,8 @@ public class WeaklyConsistentEx {
             System.out.println("Next:" + l.next());
 
             c.put(6, "Jadega");
+            System.out.println("Name + No:" + c);
+
         }
     }
 
