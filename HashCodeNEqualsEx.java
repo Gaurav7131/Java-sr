@@ -34,7 +34,7 @@ public class HashCodeNEqualsEx {
         // add in secure locker
         locker.put(key, "Original Key");
         // get key
-        System.out.println("Get key" + locker.get(key));
+        System.out.println("Get key:" + locker.get(key));
 
         // Lost key problem
         key.id = 101;

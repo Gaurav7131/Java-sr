@@ -36,7 +36,7 @@ public class StudentHashcodeNEquals {
         register.put(rn, "Origignal rn");
         System.out.println("Orignal rn:" + register.get(rn));
 
-        // chanegs lost vlaue
+        // changed rollno: lost key Problem
         rn.rollno = 101;
 
         System.out.println("Altered rollno:" + register.get(rn));
