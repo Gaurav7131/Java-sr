@@ -17,13 +17,15 @@ public class SortByValueStreamEx {
         Map<String, Integer> m2 = m.entrySet()
                 .stream()
 
-                .sorted(Map.Entry.comparingByValue())
+                // Sort by Value
+                .sorted(Map.Entry.comparingByValue()) // we can do sort by key by calling comaparingByKey() method
 
+                // Hold sorted data in LinkedHashMap
                 .collect(Collectors.toMap(
                         Map.Entry::getKey,
                         Map.Entry::getValue,
                         (oldValue, newValue) -> oldValue,
-                        LinkedHashMap::new));
+                        LinkedHashMap::new));// persist order during lifetime
 
         System.out.println("Sorted map:" + m2);
 
