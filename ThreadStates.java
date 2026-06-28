@@ -9,7 +9,7 @@ public class ThreadStates {
             }
         });
 
-        System.out.println("Get State:" + t1.getState());// new state->invoked start(),wait for cpu
+        System.out.println("Get State:" + t1.getState());// new state->Before start(),new obj created,wait for start()
 
         t1.start();
         System.out.println("Get state:" + t1.getState());// Invoked runnable(runing),inside run()
