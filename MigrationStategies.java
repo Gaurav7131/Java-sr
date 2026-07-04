@@ -1,5 +1,4 @@
 public class MigrationStategies {
-
     // 1. Define tokens at the class level (Best Practice)
     public static final ThreadLocal<String> THREAD_LOCAL_TOKEN = new ThreadLocal<>();
     public static final ScopedValue<String> SCOPED_TOKEN = ScopedValue.newInstance();
