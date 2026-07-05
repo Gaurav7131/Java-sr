@@ -11,7 +11,6 @@ class Employee implements Cloneable {
     public Object clone() throws CloneNotSupportedException {
         // shallow copy
         return super.clone();
-
     }
 }
 

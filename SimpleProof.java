@@ -8,7 +8,6 @@ public class SimpleProof {
         Tv myTv = new Tv();
 
         // we are sending remotecopy to method and try to pass obj as a ref to method
-
         tryToChangeTv(myTv);
 
         // This is the proof that java is pass by value here will be print Sony rather
@@ -23,6 +22,5 @@ public class SimpleProof {
     static void tryToChangeTv(Tv remoteCopy) {
         remoteCopy = new Tv();
         remoteCopy.name = "Samsung";
-
     }
 }

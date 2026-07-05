@@ -13,7 +13,6 @@ class Waiter extends Thread {
         System.out.println("Note 3(interrpted" + Thread.interrupted());
 
         System.out.println("Note 4" + Thread.currentThread().isInterrupted());
-
     }
 }
 

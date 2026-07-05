@@ -30,7 +30,6 @@ public class StaticKeyword {
         // b.display();
         // dynamic runtime jvm decide the obj
         b.show();
-
     }
 
 }

@@ -25,7 +25,6 @@ public class ThreadCurrentthread {
         w.join();
 
         System.out.println("Shyam complteted his task now manager can goto home!");
-
     }
 
 }
