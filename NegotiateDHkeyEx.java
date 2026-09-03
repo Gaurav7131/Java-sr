@@ -2,7 +2,7 @@ public class NegotiateDHkeyEx {
     // Conceptual handshake negotiation
     public int negotiateDhKeySize(int clientMaxSupported, int serverMaxSupported) {
         // Both sides select the strongest mutually supported group parameter (e.g.,
-        // ffdhe2048)
+        // 2048)
         int agreedBits = Math.min(clientMaxSupported, serverMaxSupported);
         if (agreedBits < 2048) {
             throw new SecurityException("Insecure Diffie-Hellman group size rejected!");
@@ -22,7 +22,7 @@ public class NegotiateDHkeyEx {
             System.out.println("Handshake failed:" + e.getMessage());
         }
 
-        // Secured parameter (> 2048)
+        // Secured parameter (>= 2048)
         try {
             System.out.println("Attempting negotiation with 2048 & 4096");
             int agreedBits = ex.negotiateDhKeySize(2048, 4096);

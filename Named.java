@@ -1,0 +1,6 @@
+/**
+ * Named
+ */
+public @interface Named {
+
+}

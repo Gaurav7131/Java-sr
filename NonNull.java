@@ -1,0 +1,6 @@
+/**
+ * NonNull
+ */
+public @interface NonNull {
+
+}
