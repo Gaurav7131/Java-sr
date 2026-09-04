@@ -9,8 +9,8 @@ public class Java11FeatZGCDemo {
 
         for (int i = 0; i < 50; i++) {
             memBurner.add(new Byte[1024 * 1024 * 2]);// Allocate 2MB chunks
-            System.out.println("Allocating Chunks");
         }
+        System.out.println("Allocating Chunks");
         memBurner.clear();// frees up mem for ZGC
         System.gc();
         System.out.println("Memory Cleared with submillis");
