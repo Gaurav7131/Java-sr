@@ -11,6 +11,6 @@ public class Java12FeatShenanDoahGcEx {
         System.out.println("Allocate Chunks");
         memoryBurner.clear();// frees up shenandoah GC
         System.gc();
-        System.out.println("Cleans up Memory within subMls");
+        System.out.println("Cleans up Memory within submilliseconds");
     }
 }
