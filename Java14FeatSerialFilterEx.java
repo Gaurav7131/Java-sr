@@ -5,7 +5,7 @@ import java.io.ObjectInputFilter;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public class Java13FeatSerialFilterEx {
+public class Java14FeatSerialFilterEx {
     public static void main(String[] args) throws Exception {
         // Set Dynamic Filter that allows String while rejects everything else
         ObjectInputFilter filter = ObjectInputFilter.Config.createFilter("java.lang.String;!*");

@@ -1,8 +1,8 @@
 import java.lang.invoke.MethodType;
 
-public class Java13FeatClassLoaderEx {
+public class Java14FeatClassLoaderEx {
     public static void main(String[] args) {
-        ClassLoader loader = Java13FeatClassLoaderEx.class.getClassLoader();
+        ClassLoader loader = Java14FeatClassLoaderEx.class.getClassLoader();
         String descriptor = "(Ljava/lang/String;)I";
 
         MethodType mt = MethodType.fromMethodDescriptorString(descriptor, loader);

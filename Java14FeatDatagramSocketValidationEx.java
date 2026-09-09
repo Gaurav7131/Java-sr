@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 
-public class Java13FeatDatagramSocketValidationEx {
+public class Java14FeatDatagramSocketValidationEx {
     public static void main(String[] args) {
         try (DatagramSocket socket = new DatagramSocket()) {
             byte[] buffer = "Hello UDP".getBytes();

@@ -1,7 +1,7 @@
 
 import java.lang.invoke.MethodHandles;
 
-public class Java13FeatPrivateLookUpEx {
+public class Java14FeatPrivateLookUpEx {
     public static void main(String[] args) {
         MethodHandles.Lookup lookup = MethodHandles.lookup();
 

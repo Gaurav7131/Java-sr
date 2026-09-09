@@ -5,12 +5,12 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
 
-public class Java13FeatFileHandlingEx {
+public class Java14FeatFileHandlingEx {
     public static void main(String[] args) {
         Path missingPath = Paths.get("non_existing.zip");
 
         try {
-            // Attempting to open witout create
+            // Attempting to open without create
             FileSystems.newFileSystem(missingPath, Map.of("create", "false"));// true:created file,false:not exist
             System.out.println("File Created");
         } catch (NoSuchFileException e) {

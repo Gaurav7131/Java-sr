@@ -1,5 +1,5 @@
 //Historically,even after Thread.isAlive==false if we called them it yields inconsistent thread state.but java 13 promotos even though we know that thread is terminated we want to know isAlive==false then Thread.isInterrupted is used without halting thread life cycle.
-public class Java13FeatInterruptedThreadEx {
+public class Java14FeatInterruptedThreadEx {
     public static void main(String[] args) throws Exception {
         Thread worker = new Thread(() -> {
             System.out.println("Worker Executed");

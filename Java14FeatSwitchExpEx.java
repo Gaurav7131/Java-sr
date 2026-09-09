@@ -1,4 +1,4 @@
-public class Java12FeatSwitchExpEx {
+public class Java14FeatSwitchExpEx {
     public static void main(String[] args) {
         String day = "MON";// "":default
 

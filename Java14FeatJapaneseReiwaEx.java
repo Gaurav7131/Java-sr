@@ -3,7 +3,7 @@ import java.time.chrono.JapaneseDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
-public class Java13FeatJapaneseReiwaEx {
+public class Java14FeatJapaneseReiwaEx {
 
     public static void main(String[] args) {
         JapaneseDate date = JapaneseDate.from(LocalDate.of(2019, 5, 1));

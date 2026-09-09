@@ -3,7 +3,7 @@ import java.net.MulticastSocket;
 import java.net.NetworkInterface;
 import java.net.StandardSocketOptions;
 
-public class Java13FeatMulticastSocketEx {
+public class Java14FeatMulticastSocketEx {
     public static void main(String[] args) throws IOException {
         try (MulticastSocket socket = new MulticastSocket()) {
             NetworkInterface ni = socket.getOption(StandardSocketOptions.IP_MULTICAST_IF);
