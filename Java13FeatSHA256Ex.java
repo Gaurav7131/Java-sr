@@ -2,7 +2,7 @@
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 
-public class Java13FeatSHA254Ex {
+public class Java13FeatSHA256Ex {
     public static void main(String[] args) throws Exception {
         // prev javac used SHA1,MD5 internal hasing algo but java 13 upgraded to SHA-254
         // to reolsve collision integrity checks.
