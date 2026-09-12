@@ -13,7 +13,7 @@ public class Java16FeatSealedClassesEx {
 
     // PaymentMethod:UPI
     public static final class Upi implements PaymentMethod {
-        public String getVpa() {
+        public String getUpi() {
             return "gt@axis";
         }
     }
@@ -22,7 +22,7 @@ public class Java16FeatSealedClassesEx {
         if (method instanceof CreditCard cc) {
             System.out.println("Processing Card: " + cc.getCardNumber());
         } else if (method instanceof Upi upi) {
-            System.out.println("Processing UPI : " + upi.getVpa());
+            System.out.println("Processing UPI : " + upi.getUpi());
         }
     }
 
@@ -31,7 +31,7 @@ public class Java16FeatSealedClassesEx {
         processPayment(paymentMode);
 
         /*
-         * If users chose CC
+         * If users chose Credit Card
          * paymentMode = new CreditCard();
          * processPayment(paymentMode);
          */
